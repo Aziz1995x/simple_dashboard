@@ -12,22 +12,22 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Install Python dependencies
-                sh 'python3 -m venv dash_env'
-                sh '. dash_env/bin/activate && pip install -r requirements.txt'
+                bat 'python -m venv dash_env'
+                bat '.\\dash_env\\Scripts\\activate && pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
                 // Run unit tests
-                sh '. dash_env/bin/activate && pytest tests/'
+                bat '.\\dash_env\\Scripts\\activate && pytest tests\\'
             }
         }
 
         stage('Deploy Dashboard') {
             steps {
                 // Deploy the dashboard
-                sh '. dash_env/bin/activate && python app.py &'
+                bat '.\\dash_env\\Scripts\\activate && python app.py &'
             }
         }
     }
