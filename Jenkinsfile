@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy Dashboard') {
             steps {
                 // Deploy the dashboard
-                bat '.\\dash_env\\Scripts\\activate && python app.py'
+                bat '.\\dash_env\\Scripts\\activate && start python app.py'
             }
         }
     }
